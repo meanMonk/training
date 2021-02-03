@@ -222,3 +222,38 @@ async function callP1() {
         console.log('Failed with exception',e);
     }
 }
+
+// APPLY CALL BIND
+//- to borrow some function and methond from another object 
+//  we can u apply call bind
+
+let laptop = {
+    name: "Delll",
+    engine: "Intel",
+    getEngineName: function () {
+        console.log(this.engine);
+    }
+}
+
+let car = {
+    name: "nexa",
+    engine: 'TATA',
+    getEnginePublisher: function (company) {
+        console.log(`${this.engine} - ${company}`)
+    }
+}
+
+
+// BIND return binder function which you can invoke by passing arguments to it.
+let getPublisher = car.getEnginePublisher.bind(laptop);
+
+
+// APPLY - help u to borrow function or can change the context function using apply
+// - access arguments in array
+
+car.getEnginePublisher.apply(laptop,['Ltd from apply!'])
+laptop.getEngineName.apply(car,[]);
+// // call
+car.getEnginePublisher.call(laptop,'Ltd from call!')
+
+
