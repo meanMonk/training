@@ -136,7 +136,7 @@ pointB.getPointLocation();
 // let circleA = new AdvanceCircle(10);
 // console.log(circleA.getCircleDiameter());
 
-/** TODO:
+/** TODO: Create class which implements linkedList
  * LinkedList
  *   addNode
  *   getAllNodes
