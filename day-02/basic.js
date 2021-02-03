@@ -128,9 +128,38 @@ let userList = [
 
    function flattern(input) {
      // write code here to solve issue
+     let result = []
+     input.forEach((item)=>{
+         if(Array.isArray(item)) {
+            flattern(item);
+         } eles {
+            result = [item]
+         }
+     })
+     return result;
    }
-   flattern() /// output
+   flattern(input) /// output
 */
+
+/* 
+NOTES : Solved problem
+let input = [[1,[2]],[3,[4,[5,6,]]]];
+let output = [1,2,3,4,5,6,7,8];
+
+function flattern(input) {
+    let result = []
+    // write code here to solve issue
+    input.forEach(item => {
+        if(Array.isArray(item)) {
+            result = result.concat(flattern(item))
+        } else {
+            result.push(item);
+        }
+    })
+    return result;
+}
+console.log(flattern(input)) /// output
+ */
 
 // asynchronous : 
 // which is going to be executed but don't know the exact time
