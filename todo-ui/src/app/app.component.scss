@@ -1,0 +1,29 @@
+.container {
+  margin: auto;
+  width: 70vw;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  .greet-message {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    span {
+      color: #b9b9e2;
+    }
+  }
+
+  .actions {
+    display: flex;
+    button {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      background: #b9b9e2;
+      color: #fff;
+      min-width: 200px;
+      margin: 0 10px;
+      min-height: 50px;
+      font-size: 20px;
+    }
+  }
+}
