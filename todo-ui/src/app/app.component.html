@@ -1,5 +1,10 @@
 <div class="container">
-  <div class="greet-message">
+  <div class="user-input">
+    <label for="userName">Enter user name:</label>
+    <input type="text" id="userName" class="user-text" [(ngModel)]="userName" />
+  </div>
+
+  <div class="greet-message" *ngIf="!!userName">
     <h1>
       Hello <span>{{ userName }}</span
       >!
@@ -7,10 +12,31 @@
   </div>
 
   <div class="actions">
-    <button (click)="changeName('Dileep')">Greet Dileep</button>
-    <button (click)="changeName('Sahil')">Greet Sahil</button>
-    <button (click)="changeName('Sunil')">Greet Sunil</button>
-    <button (click)="changeName('Surekha')">Greet Surekha</button>
+    <button
+      [ngClass]="{ blueColor: userName == 'Apple' }"
+      (click)="changeName('Apple')"
+    >
+      Greet Appple
+    </button>
+    <button
+      [style.font-size]="userName == 'Bannana' ? '30px' : ''"
+      (click)="changeName('Bannana')"
+    >
+      Greet Bannana
+    </button>
+    <button [ngStyle]="buttonStyle" (click)="changeName('mango')">
+      Greet Mango
+    </button>
+    <button
+      [ngClass]="{ blueColor: userName == 'orange' }"
+      (click)="changeName('orange')"
+    >
+      Greet Orange
+    </button>
   </div>
+
+  <hr />
+
+  <app-user-list> </app-user-list>
 </div>
 <router-outlet></router-outlet>

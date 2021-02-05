@@ -12,18 +12,47 @@
     }
   }
 
+  .user-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    padding: 5px;
+    border-bottom: 1px solid grey;
+    .user-text {
+      min-height: 40px;
+      border-radius: 5px;
+      border: 1px solid #7e6c6c;
+      margin: 5px 10px;
+    }
+  }
+
   .actions {
     display: flex;
     button {
       padding: 5px 10px;
       border-radius: 5px;
       border: none;
-      background: #b9b9e2;
-      color: #fff;
+      background: #cbcbe0;
+      color: #000;
       min-width: 200px;
       margin: 0 10px;
       min-height: 50px;
       font-size: 20px;
+
+      &.sahil {
+        background: rgb(129, 123, 123);
+      }
+
+      &.blueColor {
+        background: blue;
+      }
+      &.greenColor {
+        background: green;
+      }
+      &.surekha {
+        background: pink;
+      }
     }
   }
 }
