@@ -1,0 +1,18 @@
+<h1>2. Two Way Data binding</h1>
+<section>
+  <small>Description: Can be possible over an input</small>
+  <div>
+    <p>Using element property</p>
+    <h4>
+      User Enter: <span [style.color]="redColor">{{ inputValue }}</span>
+    </h4>
+    <input type="text" [value]="inputValue" (input)="onInputChange($event)" />
+  </div>
+  <div>
+    <p>Using angular ngModel</p>
+    <h4>
+      User Enter: <span [style.color]="redColor">{{ ngModelValue }}</span>
+    </h4>
+    <input type="text" [(ngModel)]="ngModelValue" />
+  </div>
+</section>

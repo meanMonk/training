@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserListComponent } from './user-list.component';
+import { OneWayDataBindingComponent } from './one-way-data-binding.component';
 
-describe('UserListComponent', () => {
-  let component: UserListComponent;
-  let fixture: ComponentFixture<UserListComponent>;
+describe('OneWayDataBindingComponent', () => {
+  let component: OneWayDataBindingComponent;
+  let fixture: ComponentFixture<OneWayDataBindingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserListComponent ]
+      declarations: [ OneWayDataBindingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserListComponent);
+    fixture = TestBed.createComponent(OneWayDataBindingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

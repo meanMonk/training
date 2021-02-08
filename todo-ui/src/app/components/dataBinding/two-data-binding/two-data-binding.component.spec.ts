@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserComponent } from './user.component';
+import { TwoDataBindingComponent } from './two-data-binding.component';
 
-describe('UserComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
+describe('TwoDataBindingComponent', () => {
+  let component: TwoDataBindingComponent;
+  let fixture: ComponentFixture<TwoDataBindingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      declarations: [ TwoDataBindingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserComponent);
+    fixture = TestBed.createComponent(TwoDataBindingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,35 @@
+<h1>1. One Way Data binding</h1>
+<section>
+  <p>COMPONENT (Model) TO VIEW</p>
+  <ul>
+    <li>
+      <div>
+        <h4>Using template interpolation</h4>
+        <h1 [style.color]="color">{{ title }}</h1>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h4>Using property binding []</h4>
+        <h1 [style.color]="redColor" [innerHtml]="title"></h1>
+      </div>
+    </li>
+  </ul>
+</section>
+<section>
+  <p>VIEW to COMPONENT (Model)</p>
+  <ul>
+    <li>
+      <div>
+        <h4>Counter getting update on click</h4>
+        <h1 [style.color]="color">{{ count }}</h1>
+      </div>
+    </li>
+    <li>
+      <div>
+        <button (click)="increaseCount()">Increase Count</button>
+        <button (click)="decreaseCount()">Decrease Count</button>
+      </div>
+    </li>
+  </ul>
+</section>
