@@ -1,0 +1,79 @@
+<section class="py-1 container mx-auto">
+  <h1 class="fs-3 fw-bolder text-center">Day-07</h1>
+
+  <p>Hello <span class="text-primary fw-bold">A</span>lphabet</p>
+
+  <div class="row py-1">
+    <div class="col-3 border">
+      <h2 class="text-center">PIPES</h2>
+      <ul>
+        <li>DatePipe</li>
+        <li>CurrencyPipe</li>
+        <li>LowercasePipe</li>
+        <li>JsonPipe</li>
+        <li>TitleCasePipe</li>
+      </ul>
+    </div>
+    <div class="col-3 border">
+      <h4 class="text-center">DatePipe</h4>
+      <p>{{ currentDate }}</p>
+      <span class="fw-bold">Date after formating with pipes</span>
+      <p>{{ currentDate | date }}</p>
+      <p>{{ currentDate | date: "medium" }}</p>
+      <p>{{ currentDate | date: "short" }}</p>
+      <p>{{ currentDate | date: "long" }}</p>
+      <p>{{ currentDate | date: "MMM - dd - y" }}</p>
+    </div>
+    <div class="col-3 border">
+      <h4 class="text-center">CurrencyPipe</h4>
+      <p>{{ totalAmount }}</p>
+      <span class="fw-bold">Currency after formating with pipes</span>
+      <p>{{ totalAmount | currency }}</p>
+      <p>{{ totalAmount | currency: "INR" }}</p>
+      <p>{{ totalAmount | currency: "INR":"code" }}</p>
+      <p>{{ totalAmount | currency: "GBP" }}</p>
+    </div>
+    <div class="col-3 border">
+      <h4 class="text-center">LowercasePipe | UpperCase</h4>
+      <p>{{ description }}</p>
+      <span class="fw-bold">After applying lower case</span>
+      <p>{{ description | lowercase }}</p>
+      <span class="fw-bold">After applying uppercase case</span>
+      <p>{{ description | uppercase }}</p>
+      <span class="fw-bold">After applying title case</span>
+      <p>{{ description | titlecase }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 border border-primary">
+      <h4 class="text-center">Json Pipe</h4>
+      <p>{{ user }}</p>
+      <div *ngFor="let i of user">
+        <p>{{ i.userName }} - {{ i.email }}- {{ i.age }}-{{ i.name }}</p>
+      </div>
+      <span class="fw-bold">After applying JSONPIPE</span>
+      <p>
+        <code>{{ user | json }}</code>
+      </p>
+    </div>
+    <div class="col-6 border border-primary">
+      <h4 class="text-center">Custom Logic</h4>
+      <p class="fw-bolder">Input: {{ title }}</p>
+      <button
+        *ngIf="!result"
+        class="btn btn-outline-primary"
+        (click)="addDecoration()"
+      >
+        Covert
+      </button>
+      <p>Ouput: {{ result }}</p>
+      <hr />
+      <h4 class="text-center">Custom Pipe</h4>
+      <p class="fw-bolder">Input: {{ title | textDecorate }}</p>
+      <p class="fw-bolder">Input: {{ title | textDecorate: "@":2 }}</p>
+      <p class="fw-bolder">Input: {{ "Hello" | textDecorate: "$":3 }}</p>
+      <p class="fw-bolder">Input: {{ "Hey" | textDecorate: "-":2 }}</p>
+      <p class="fw-bolder">Input: {{ "Yess" | textDecorate: "#":1 }}</p>
+    </div>
+  </div>
+</section>
