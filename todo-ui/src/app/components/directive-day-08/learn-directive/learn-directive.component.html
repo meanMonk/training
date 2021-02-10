@@ -1,0 +1,40 @@
+<section class="py-1 container mx-auto">
+  <h2 class="text-secondary">Directive</h2>
+  <button
+    class="btn btn-outline-primary mx-5"
+    (click)="onChangeDirective('structural')"
+    [ngClass]="{ active: selectedDirective === 'structural' }"
+  >
+    Show Structural
+  </button>
+  <button
+    class="btn btn-outline-primary"
+    [ngClass]="{ active: selectedDirective === 'attribute' }"
+    (click)="onChangeDirective('attribute')"
+  >
+    Show Attribute
+  </button>
+  <div *ngIf="selectedDirective === 'structural'" class="row">
+    <h4 class="text-capitalize">{{ selectedDirective }} Directives</h4>
+    <div class="col-12">
+      <ul class="list-group">
+        <li
+          *ngFor="let item of strDirectives; let i = index"
+          class="list-group-item"
+        >
+          {{ i }} {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="selectedDirective === 'attribute'" class="row">
+    <h4 class="">{{ selectedDirective | titlecase }} Directives</h4>
+    <div class="col-12">
+      <ul>
+        <li *ngFor="let item of atrDirective; let i = index">
+          {{ i }} {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

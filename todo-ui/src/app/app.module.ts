@@ -4,10 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OneWayDataBindingComponent } from './components/dataBinding/one-way-data-binding/one-way-data-binding.component';
-import { TwoDataBindingComponent } from './components/dataBinding/two-data-binding/two-data-binding.component';
-import { PipeListingComponent } from './components/pipes-day-07/pipe-listing/pipe-listing.component';
+import {
+  OneWayDataBindingComponent,
+  PipeListingComponent,
+  TwoDataBindingComponent,
+  LearnDirectiveComponent,
+} from './components';
 import { TextDecoratePipe } from './shared/pipes/text-decorate.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,9 +19,11 @@ import { TextDecoratePipe } from './shared/pipes/text-decorate.pipe';
     TwoDataBindingComponent,
     PipeListingComponent,
     TextDecoratePipe,
+    LearnDirectiveComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
+  exports: [TextDecoratePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
