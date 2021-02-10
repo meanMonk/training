@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearnDirectiveComponent implements OnInit {
   selectedDirective: string = 'structural';
+  currenthoverElement: string = ''
   strDirectives: Array<string> = [
     'Ng If',
     'Ng for',

@@ -19,8 +19,13 @@
     <div class="col-12">
       <ul class="list-group">
         <li
+          (mouseenter)="currenthoverElement = item"
+          (mouseleave)="currenthoverElement = ''"
           *ngFor="let item of strDirectives; let i = index"
           class="list-group-item"
+          [ngStyle]="{
+            background: item == currenthoverElement ? '#dadbe1' : ''
+          }"
         >
           {{ i }} {{ item }}
         </li>
@@ -30,8 +35,11 @@
   <div *ngIf="selectedDirective === 'attribute'" class="row">
     <h4 class="">{{ selectedDirective | titlecase }} Directives</h4>
     <div class="col-12">
-      <ul>
-        <li *ngFor="let item of atrDirective; let i = index">
+      <ul class="list-group">
+        <li
+          *ngFor="let item of atrDirective; let i = index"
+          class="list-group-item"
+        >
           {{ i }} {{ item }}
         </li>
       </ul>
