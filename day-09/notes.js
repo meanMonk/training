@@ -5,8 +5,8 @@
  *
  *
  * Decorators :
- *  when ever you created your own component  you want to pass data to that component
- * Parent   ===>  Child
+ *  when ever you created new component  you want to pass data to that component from parent
+ *   Parent ===> Child
  *    @Input:    <app-data-sharing  [userList]="userList" ></app-data-sharing>
  *  when ever we want to listen to the any changes or events in component
  * Child    ===>  Parent

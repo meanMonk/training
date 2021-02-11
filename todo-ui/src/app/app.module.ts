@@ -12,6 +12,8 @@ import {
 } from './components';
 import { TextDecoratePipe } from './shared/pipes/text-decorate.pipe';
 import { UserManagementComponent } from './components/parent-child-com/user-management/user-management.component';
+import { UserProfileComponent } from './components/parent-child-com/user-profile/user-profile.component';
+import { UserListingComponent } from './components/parent-child-com/user-listing/user-listing.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { UserManagementComponent } from './components/parent-child-com/user-mana
     TextDecoratePipe,
     LearnDirectiveComponent,
     UserManagementComponent,
+    UserProfileComponent,
+    UserListingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

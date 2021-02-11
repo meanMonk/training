@@ -1,0 +1,14 @@
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let user of userList"
+    (click)="onSelectUser(user)"
+    [ngStyle]="{
+      background: selectedUser?.id == user?.id ? '#8d5a5a' : ''
+    }"
+  >
+    <h5>
+      {{ user.name }} <small>{{ user.email }}</small>
+    </h5>
+  </li>
+</ul>
