@@ -1,0 +1,92 @@
+<div class="container mx-auto border">
+  <p>user form</p>
+  <div class="card">
+    <div class="card-header">Create New User</div>
+    <pre>
+        <!-- {{ userForm | json }} -->
+        <!-- {{f.value | json}} -->
+    </pre>
+    <div class="card-body">
+      <form novalidate #f="ngForm">
+        <div class="mb-3">
+          <label for="usernameInput" class="form-label">user name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="usernameInput"
+            aria-describedby="userHelp"
+            [(ngModel)]="userForm.userName"
+            required
+            name="userName"
+            #usernameInput="ngModel"
+          />
+          <small
+            [hidden]="usernameInput.valid || usernameInput.pristine"
+            class="text-danger"
+          >
+            User name is required!
+          </small>
+        </div>
+        <div class="mb-3">
+          <label for="userEmailInput" class="form-label">email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="userEmailInput"
+            aria-describedby="userHelp"
+            [(ngModel)]="userForm.email"
+            required
+            name="email"
+            #userEmailInput="ngModel"
+          />
+          <small
+            [hidden]="userEmailInput.valid || userEmailInput.pristine"
+            class="text-danger"
+          >
+            email is required!
+          </small>
+        </div>
+        <div class="mb-3">
+          <label for="userPhoneInput" class="form-label">phone number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="userPhoneInput"
+            aria-describedby="userHelp"
+            [(ngModel)]="userForm.phone"
+            required
+            name="phone"
+            #userPhoneInput="ngModel"
+          />
+          <small
+            [hidden]="userPhoneInput.valid || userPhoneInput.pristine"
+            class="text-danger"
+          >
+            Enter phone is required and invalid ex. +91345678912!
+          </small>
+        </div>
+        <div class="mb-3">
+          <label for="userPhoneInput" class="form-label">City</label>
+          <select
+            class="form-select"
+            name="city"
+            aria-label="select city"
+            [(ngModel)]="userForm.city"
+          >
+            <option selected>Select city</option>
+            <option *ngFor="let city of cityList" [value]="city">
+              {{ city }}
+            </option>
+          </select>
+        </div>
+        <button
+          class="btn btn-outline-success"
+          [disabled]="f.invalid"
+          (click)="submitUser(f.value); f.reset()"
+        >
+          Save User
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

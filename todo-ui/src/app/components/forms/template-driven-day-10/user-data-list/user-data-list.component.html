@@ -1,0 +1,11 @@
+<div class="container border">
+  <p>user listing</p>
+  <ul class="group-list">
+    <li *ngFor="let user of data" class="group-list-item">
+      {{ user | json }}
+      <button class="btn btn-sm btn-outline-danger" (click)="delete(user)">
+        remove
+      </button>
+    </li>
+  </ul>
+</div>

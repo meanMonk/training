@@ -14,6 +14,9 @@ import { TextDecoratePipe } from './shared/pipes/text-decorate.pipe';
 import { UserManagementComponent } from './components/parent-child-com/user-management/user-management.component';
 import { UserProfileComponent } from './components/parent-child-com/user-profile/user-profile.component';
 import { UserListingComponent } from './components/parent-child-com/user-listing/user-listing.component';
+import { UserFormComponent } from './components/forms/template-driven-day-10/user-form/user-form.component';
+import { UserMngComponent } from './components/forms/template-driven-day-10/user-mng/user-mng.component';
+import { UserDataListComponent } from './components/forms/template-driven-day-10/user-data-list/user-data-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { UserListingComponent } from './components/parent-child-com/user-listing
     UserManagementComponent,
     UserProfileComponent,
     UserListingComponent,
+    UserFormComponent,
+    UserMngComponent,
+    UserDataListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

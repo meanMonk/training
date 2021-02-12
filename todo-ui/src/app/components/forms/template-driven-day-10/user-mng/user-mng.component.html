@@ -1,0 +1,14 @@
+<div class="container border">
+  <p>user management</p>
+  <div class="row">
+    <div class="col-6">
+      <app-user-form (onNewUser)="saveUser($event)"></app-user-form>
+    </div>
+    <div class="col-6">
+      <app-user-data-list
+        (onDelete)="onUserDelete($event)"
+        [data]="userDataList"
+      ></app-user-data-list>
+    </div>
+  </div>
+</div>
