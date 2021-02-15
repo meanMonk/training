@@ -14,6 +14,8 @@
 
 /* Week - 02 - 3rd Week*/
 /**
+ * 0.1 Reactive / Model Driven (uses formBuilders)
+ * 0.2 Advance reactive forms
  * 1. DI dependancy injection : service
  * 2. how Create services
  * 3. CRUD using services
