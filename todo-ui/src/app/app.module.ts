@@ -18,6 +18,7 @@ import { UserFormComponent } from './components/forms/template-driven-day-10/use
 import { UserMngComponent } from './components/forms/template-driven-day-10/user-mng/user-mng.component';
 import { UserDataListComponent } from './components/forms/template-driven-day-10/user-data-list/user-data-list.component';
 import { SalesFormsComponent } from './components/forms/model-driven/sales-forms/sales-forms.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SalesFormsComponent } from './components/forms/model-driven/sales-forms
     UserMngComponent,
     UserDataListComponent,
     SalesFormsComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
