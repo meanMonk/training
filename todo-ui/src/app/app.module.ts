@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,7 @@ import { UserListingComponent } from './components/parent-child-com/user-listing
 import { UserFormComponent } from './components/forms/template-driven-day-10/user-form/user-form.component';
 import { UserMngComponent } from './components/forms/template-driven-day-10/user-mng/user-mng.component';
 import { UserDataListComponent } from './components/forms/template-driven-day-10/user-data-list/user-data-list.component';
+import { SalesFormsComponent } from './components/forms/model-driven/sales-forms/sales-forms.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,9 @@ import { UserDataListComponent } from './components/forms/template-driven-day-10
     UserFormComponent,
     UserMngComponent,
     UserDataListComponent,
+    SalesFormsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   exports: [TextDecoratePipe],
   bootstrap: [AppComponent],

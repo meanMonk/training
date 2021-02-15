@@ -1,0 +1,84 @@
+<section class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <h5>Sales forms!</h5>
+      </div>
+      <div class="row">
+        <div class="col-8 offset-1">
+          <form
+            novalidate
+            [formGroup]="salesForm"
+            (ngSubmit)="onSalesFormSubmit()"
+          >
+            <div class="mb-3">
+              <label for="titleInputId" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="titleInputId"
+                aria-describedby="titleHelp"
+                formControlName="title"
+              />
+              <div
+                *ngIf="
+                  salesForm.controls.title.errors &&
+                  (salesForm.controls.title.dirty ||
+                    salesForm.controls.title.touched)
+                "
+                id="titleHelp"
+                class="form-text text-danger"
+              >
+                <!-- NOTE: to listen to the errors for the input fields. -->
+                <!-- <pre>Dirty ? {{ salesForm.controls.title.dirty }}</pre>
+                <pre>Touch ? {{ salesForm.controls.title.touched }}</pre>
+                <pre>Pristine ? {{ salesForm.controls.title.pristine }}</pre>
+                <pre>valid ? {{ salesForm.controls.title.valid }}</pre>
+                <pre>Invalid ? {{ salesForm.controls.title.invalid }}</pre>
+                <pre>Errors ? {{ salesForm.controls.title.errors | json }}</pre> -->
+                <pre *ngIf="salesForm.controls.title.errors.required">
+                    Title is Required
+                </pre>
+                <pre *ngIf="salesForm.controls.title.errors.maxlength">
+                    Max length for title is 3!
+                </pre>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="nameInputId" class="form-label">User name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nameInputId"
+                aria-describedby="nameHelp"
+                formControlName="name"
+              />
+              <div id="nameHelp" class="form-text text-danger">
+                Name is Required field
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label"
+                >User Description</label
+              >
+              <textarea
+                class="form-control"
+                placeholder="Leave a comment here"
+                id="description"
+                style="height: 100px"
+                formControlName="description"
+              ></textarea>
+            </div>
+            <!-- <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >I agree all terms!</label
+          >
+        </div> -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
