@@ -31,9 +31,36 @@
  *
 */
 
+let a = {
+    fullName: "sahil",
+    userName: "sahil",
+    email: "sahil",
+    classList: [
+        {
+            className: '10th',
+            subjects: [
+                {
+                    name: 'english',
+                    marks: 10
+                },
+                {
+                    name: 'english',
+                    marks: 10
+                }
+            ]
+        }
+    ]
+}
+
 /**
  * Next lecture
  *      - Nested forms
+ *
+ * userDetails :
+ *      userName:
+ *
+ *
+ *
  *      - Dynamica value setting
  *      - Dynamic field adding and removal
  *
