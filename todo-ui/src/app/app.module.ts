@@ -19,6 +19,7 @@ import { UserMngComponent } from './components/forms/template-driven-day-10/user
 import { UserDataListComponent } from './components/forms/template-driven-day-10/user-data-list/user-data-list.component';
 import { SalesFormsComponent } from './components/forms/model-driven/sales-forms/sales-forms.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TextDesignPipe } from './shared/pipes/text-design.pipe';
 
 @NgModule({
   declarations: [
@@ -36,9 +37,10 @@ import { LoginComponent } from './pages/login/login.component';
     UserDataListComponent,
     SalesFormsComponent,
     LoginComponent,
+    TextDesignPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [TextDesignPipe],
   exports: [TextDecoratePipe],
   bootstrap: [AppComponent],
 })
