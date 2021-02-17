@@ -1,10 +1,15 @@
-<div class="container mx-auto">
-  <div class="card">
+<div class="container mx-auto row">
+  <div class="col-4 my-5">
+    <pre>
+      {{ appForm.value | json }}
+    </pre>
+  </div>
+  <div class="card col-8">
     <div class="card-header">
       <h4>User Application form!</h4>
     </div>
     <div class="card-body">
-      <form novalidate [formGroup]="appForm">
+      <form novalidate [formGroup]="appForm" (ngSubmit)="saveUserApplication()">
         <div class="form-group mb-3">
           <label for="fullNameInput" class="form-label">full name</label>
           <input
@@ -36,13 +41,40 @@
             id="emailInput"
           />
         </div>
+        <div class="form-group mb-3">
+          <label for="stateInput" class="form-label">Select State</label>
+          <select
+            class="form-select form-select-sm"
+            id="stateInput"
+            formControlName="state"
+            aria-label=".form-select-sm example"
+          >
+            <option selected>Select state</option>
+            <option *ngFor="let state of stateList" value="{{ state }}">
+              {{ state }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="stateInput" class="form-label">Select City</label>
+          <select
+            class="form-select form-select-sm"
+            id="stateInput"
+            formControlName="city"
+            aria-label=".form-select-sm example"
+          >
+            <option selected>Select city</option>
+            <option *ngFor="let city of cityList" value="{{ city }}">
+              {{ city }}
+            </option>
+          </select>
+        </div>
+
         <div formArrayName="classlist">
           <div
             class="card border border-primary"
-            *ngFor="
-              let classitem of appForm.get('classlist').controls;
-              let i = index
-            "
+            *ngFor="let standard of getClassListControls(); let i = index"
+            [formGroupName]="i"
           >
             <div
               class="card-header d-flex justify-content-between align-items-center"
@@ -54,49 +86,72 @@
                   class="form-control form-control-sm ml-1"
                   name="class"
                   id="classInput"
+                  formControlName="classname"
                 />
               </div>
-              <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
+              <i
+                (click)="removeClass(i)"
+                class="fa fa-times-circle text-danger"
+                aria-hidden="true"
+              ></i>
             </div>
             <div class="card-body">
               <div class="card-content">
-                <div
-                  class="form-group d-flex justify-content-between align-items-center"
-                >
-                  <div class="form-group mb-3">
-                    <label for="subjectNameInput" class="form-label"
-                      >Subject name</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control form-control-sm"
-                      name="userName"
-                      id="subjectNameInput"
-                    />
+                <div formArrayName="subjectlist">
+                  <div
+                    class="form-group d-flex justify-content-between align-items-center"
+                    *ngFor="
+                      let subject of getSubjectListControls(standard);
+                      let j = index
+                    "
+                    [formGroupName]="j"
+                  >
+                    <div class="form-group mb-3">
+                      <label for="subjectNameInput" class="form-label"
+                        >Subject name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        name="userName"
+                        formControlName="subjectName"
+                        id="subjectNameInput"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="marksInput" class="form-label">Marks</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        name="marks"
+                        formControlName="mark"
+                        id="marksInput"
+                      />
+                    </div>
+                    <i
+                      (click)="removeSubject(standard, j)"
+                      class="fa fa-times-circle text-danger"
+                      aria-hidden="true"
+                    ></i>
                   </div>
-                  <div class="form-group mb-3">
-                    <label for="marksInput" class="form-label">Marks</label>
-                    <input
-                      type="text"
-                      class="form-control form-control-sm"
-                      name="marks"
-                      id="marksInput"
-                    />
-                  </div>
-                  <i
-                    class="fa fa-times-circle text-danger"
-                    aria-hidden="true"
-                  ></i>
                 </div>
               </div>
-              <button type="button" class="btn btn-sm rounded btn-dark">
+              <button
+                type="button"
+                class="btn btn-sm rounded btn-dark"
+                (click)="addSubject(standard)"
+              >
                 New subject
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
               </button>
             </div>
           </div>
         </div>
-        <button type="button" class="my-3 btn btn-sm rounded btn-dark">
+        <button
+          type="button"
+          class="my-3 btn btn-sm rounded btn-dark"
+          (click)="addClass()"
+        >
           New class
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>

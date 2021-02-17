@@ -21,6 +21,8 @@ import { SalesFormsComponent } from './components/forms/model-driven/sales-forms
 import { LoginComponent } from './pages/login/login.component';
 import { TextDesignPipe } from './shared/pipes/text-design.pipe';
 import { UserApplicationFormComponent } from './components/forms/nested-forms/user-application-form/user-application-form.component';
+import { AppFormService } from './services/app-form.service';
+import { ApplicationsService } from './services/data/applications.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { UserApplicationFormComponent } from './components/forms/nested-forms/us
     UserApplicationFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [TextDesignPipe],
+  providers: [TextDesignPipe, AppFormService, ApplicationsService],
   exports: [TextDecoratePipe],
   bootstrap: [AppComponent],
 })
