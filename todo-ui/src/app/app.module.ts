@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
@@ -24,6 +24,8 @@ import { UserApplicationFormComponent } from './components/forms/nested-forms/us
 import { AppFormService } from './services/app-form.service';
 import { ApplicationsService } from './services/data/applications.service';
 import { ApplicationListComponent } from './components/forms/nested-forms/application-list/application-list.component';
+import { SocialFeedComponent } from './components/social-feed/social-feed.component';
+import { SocialFeedService } from './services/feed/social-feed.service';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,21 @@ import { ApplicationListComponent } from './components/forms/nested-forms/applic
     TextDesignPipe,
     UserApplicationFormComponent,
     ApplicationListComponent,
+    SocialFeedComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [TextDesignPipe, AppFormService, ApplicationsService],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    TextDesignPipe,
+    AppFormService,
+    ApplicationsService,
+    SocialFeedService,
+  ],
   exports: [TextDecoratePipe],
   bootstrap: [AppComponent],
 })

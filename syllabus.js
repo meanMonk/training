@@ -22,7 +22,6 @@
  * 4. Routing
  * 5. Parent Routes / Child Routes
  * 6. Auth Gaurds and Interceptors
- *
  */
 
 /* Week - 03 - 4th week */
