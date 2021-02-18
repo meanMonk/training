@@ -12,6 +12,11 @@ export class ApplicationsService {
     return this.appFormList;
   }
 
+  removeUser(index: any) {
+    this.appFormList = this.appFormList.filter((item, i) => index !== i);
+    return this.appFormList;
+  }
+
   saveAppForm(formValue: any) {
     this.appFormList.push(formValue);
   }

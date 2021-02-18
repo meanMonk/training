@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApplicationsService } from 'src/app/services/data/applications.service';
 
 @Component({
   selector: 'app-two-data-binding',
@@ -9,7 +10,7 @@ export class TwoDataBindingComponent implements OnInit {
   inputValue: string = 'default';
   ngModelValue: string = 'model';
   redColor: string = 'tomato';
-  constructor() {}
+  constructor(private appService: ApplicationsService) {}
 
   ngOnInit(): void {}
   onInputChange(event: any) {

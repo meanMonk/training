@@ -22,7 +22,7 @@ export class UserApplicationFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private appFormService: AppFormService,
-    private AppService: ApplicationsService
+    private appService: ApplicationsService
   ) {
     this.stateList = appFormService.getStateList();
   }
@@ -97,6 +97,7 @@ export class UserApplicationFormComponent implements OnInit {
 
   saveUserApplication() {
     console.log(this.appForm.value);
-    this.AppService.saveAppForm(this.appForm.value);
+    this.appService.saveAppForm(this.appForm.value);
+    this.appForm.reset();
   }
 }

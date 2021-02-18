@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="list-group">
+    <div
+      *ngFor="let user of applicationsList; let i = index"
+      class="list-group-item"
+    >
+      <i class="fa fa-trash-o" (click)="deleteUser(i)"></i>
+      <h6>
+        {{ user.fullname }}
+        <span class="text-sm text-primary">({{ user.username }})</span>
+      </h6>
+      <p>{{ user.state }} - {{ user.city }}</p>
+      <h6>{{ user.classlist | json }}</h6>
+    </div>
+  </div>
+</div>

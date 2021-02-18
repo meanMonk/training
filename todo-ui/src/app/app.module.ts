@@ -23,6 +23,7 @@ import { TextDesignPipe } from './shared/pipes/text-design.pipe';
 import { UserApplicationFormComponent } from './components/forms/nested-forms/user-application-form/user-application-form.component';
 import { AppFormService } from './services/app-form.service';
 import { ApplicationsService } from './services/data/applications.service';
+import { ApplicationListComponent } from './components/forms/nested-forms/application-list/application-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ApplicationsService } from './services/data/applications.service';
     LoginComponent,
     TextDesignPipe,
     UserApplicationFormComponent,
+    ApplicationListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [TextDesignPipe, AppFormService, ApplicationsService],

@@ -6,33 +6,33 @@ Day-13 :
 
 */
 
-class EarPhone {
+/* class EarPhone {
 	constructor() {}
 
 	increase() {}
 	decrease() {}
-}
+} */
 /* 
 
 .... many more classes can be here
 */
-class Battery {
+/* class Battery {
 	constructor() {}
 
 	getbatteryLevel() {}
-}
+} */
 
-class Mobile {
+/* class Mobile {
 	constructor(public earPhone: EarPhone, public battery: Battery) {
 		// this.earPhone = new EarPhone();
 	}
-}
+} */
 
-const earPhone = new EarPhone();
+/* const earPhone = new EarPhone();
 const battery = new Battery();
 
 const xiomiMobile = new Mobile(earPhone, battery);
-
+ */
 /**
  * Dependency Injection Angular
  *  - services / pipe
