@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div
+        *ngFor="let user of userList"
+        class="card p-2 mb-3"
+        (click)="selectUser(user)"
+      >
+        <h4>{{ user.username }}</h4>
+        <p>
+          {{ user.name }} <small>{{ user.email }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

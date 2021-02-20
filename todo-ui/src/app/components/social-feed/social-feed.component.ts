@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SocialFeedService } from 'src/app/services/feed/social-feed.service';
 
@@ -8,32 +9,26 @@ import { SocialFeedService } from 'src/app/services/feed/social-feed.service';
   styleUrls: ['./social-feed.component.scss'],
 })
 export class SocialFeedComponent implements OnInit {
-  userList: Array<any> = [];
   postList!: Observable<any>;
   selectedUser: any;
 
-  constructor(private sfService: SocialFeedService) {}
-
-  ngOnInit(): void {
-    // this.userList = this.sfService.loadUserList();
-    this.getUserList();
-    // this.postList = this.sfService.loadPostList();
+  constructor(
+    private sfService: SocialFeedService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      this.getPostList(params.id);
+    });
   }
 
-  getUserList() {
-    this.sfService.loadUserList().subscribe(
-      (res: any) => {
-        console.log('userList', res);
-        this.userList = res;
-      },
-      (err) => {
-        console.log('error while loading user!', err);
-      }
-    );
+  ngOnInit(): void {}
+
+  getPostList(id: any) {
+    this.postList = this.sfService.loadPostList(id);
   }
 
-  selectUser(user: any) {
-    this.selectedUser = user;
-    this.postList = this.sfService.loadPostList(user.id);
+  gotBack() {
+    this.router.navigate(['/feeds']);
   }
 }

@@ -26,6 +26,7 @@ import { ApplicationsService } from './services/data/applications.service';
 import { ApplicationListComponent } from './components/forms/nested-forms/application-list/application-list.component';
 import { SocialFeedComponent } from './components/social-feed/social-feed.component';
 import { SocialFeedService } from './services/feed/social-feed.service';
+import { UsersListingComponent } from './components/social-feed/users-listing/users-listing.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SocialFeedService } from './services/feed/social-feed.service';
     UserApplicationFormComponent,
     ApplicationListComponent,
     SocialFeedComponent,
+    UsersListingComponent,
   ],
   imports: [
     BrowserModule,
