@@ -43,17 +43,3 @@ const network = new Network();
 const mobile = new Mobile(earphone, battery, network);
 
 // assert(mobile.earphone).isAvailable()
-
-
-
-/**
- * Making api call in angular 
- *  - HTTP calls 
- * 	 - GET | POST | PUT | DELETE
- * 
- * 
- * HttpClientModule 
- * 
-*/
-
-

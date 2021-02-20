@@ -92,8 +92,15 @@ export class SocialFeedService {
     return this.http.get('http://jsonplaceholder.typicode.com/users');
   }
 
-  loadPostList() {
-    // https://jsonplaceholder.typicode.com/posts
-    return this.postList;
+  loadPostList(userId: any) {
+    // return this.postList;
+
+    return this.http.get(
+      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+    );
+  }
+
+  createPost(payload: any) {
+    this.http.post('https://jsonplaceholder.typicode.com/posts', payload);
   }
 }

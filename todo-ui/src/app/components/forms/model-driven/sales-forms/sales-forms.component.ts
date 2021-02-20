@@ -24,18 +24,20 @@ export class SalesFormsComponent implements OnInit {
     /// set the value for variable called sales form
     /// with formGroup class instance.
     this.salesForm = new FormGroup({
-      title: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(3),
-      ]),
-      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      title: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       description: new FormControl(''),
     });
   }
 
   onSalesFormSubmit() {
-    if (!this.salesForm?.valid) {
+    if (this.salesForm?.valid) {
       console.log('Value for submit form', this.salesForm?.value);
+      // this.sfService.createPost(this.salesForm.value).subscribe((res)=>{
+      //   this.submitted= true
+      // }, (err)=>{
+      //   console.log('err')
+      // })
       this.salesForm?.reset();
     } else {
       console.error('Invalid forms!');

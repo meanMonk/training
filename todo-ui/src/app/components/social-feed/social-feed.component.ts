@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SocialFeedService } from 'src/app/services/feed/social-feed.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SocialFeedService } from 'src/app/services/feed/social-feed.service';
 })
 export class SocialFeedComponent implements OnInit {
   userList: Array<any> = [];
-  postList: Array<any> = [];
+  postList!: Observable<any>;
   selectedUser: any;
 
   constructor(private sfService: SocialFeedService) {}
@@ -16,13 +17,13 @@ export class SocialFeedComponent implements OnInit {
   ngOnInit(): void {
     // this.userList = this.sfService.loadUserList();
     this.getUserList();
-    this.postList = this.sfService.loadPostList();
+    // this.postList = this.sfService.loadPostList();
   }
 
   getUserList() {
     this.sfService.loadUserList().subscribe(
       (res: any) => {
-        console.log('userLIst', res);
+        console.log('userList', res);
         this.userList = res;
       },
       (err) => {
@@ -33,5 +34,6 @@ export class SocialFeedComponent implements OnInit {
 
   selectUser(user: any) {
     this.selectedUser = user;
+    this.postList = this.sfService.loadPostList(user.id);
   }
 }

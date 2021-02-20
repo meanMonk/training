@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-5">
-      <div *ngFor="let user of userList" class="card p-2 mb-3"
-      (click)="selectUser(user)"
+      <div
+        *ngFor="let user of userList"
+        class="card p-2 mb-3"
+        (click)="selectUser(user)"
       >
-        {{ user | json }}
+        <h4>{{ user.username }}</h4>
+        <!-- {{ user | json }} -->
       </div>
     </div>
     <div class="col-7">
       <h3>{{ selectedUser?.name }} - {{ selectedUser?.username }}</h3>
-      <div *ngFor="let post of postList" class="card mb-3 p-2">
-        {{ post | json }}
+      <div *ngFor="let post of postList | async" class="card mb-3 p-2">
+        <p>{{ post.title }}</p>
+        <small>{{ post.body }}</small>
       </div>
     </div>
   </div>

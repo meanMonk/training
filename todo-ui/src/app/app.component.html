@@ -1,41 +1,86 @@
-<!-- <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <h1 class="fs-1 fw-bolder" style="color: rgb(63, 84, 110)">
-        {{ "Forbes Marshall" }}
-      </h1>
-    </a>
+<div class="container-fluid">
+  <div class="row">
+    <nav
+      id="sidebarMenu"
+      class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+    >
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li *ngFor="let route of applicationRouteList" class="nav-item">
+            <a
+              class="nav-link"
+              [routerLinkActive]="'active'"
+              [routerLink]="[route.path]"
+            >
+              <i class="fa" [ngClass]="route.iconName"></i>
+              {{ route.label }}
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLinkActive]="'active'"
+              [routerLink]="['/databinding-1']"
+            >
+              <span data-feather="home"></span>
+              1 Data Binding
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/databinding-2']">
+              <span data-feather="home"></span>
+              2 Data Binding
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/salesform']">
+              <span data-feather="home"></span>
+              Sales form
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Directive
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Forms
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="users"></span>
+              Input/Output
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+              Pipes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="layers"></span>
+              Social Feed
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <nav class="navbar bg-dark">
+        <div class="container-fluid">
+          <h4 class="fs-1 fw-bolder" style="color: rgb(63, 84, 110)">
+            {{ "Forbes Marshall" }}
+          </h4>
+        </div>
+      </nav>
+      <button class="btn btn-primary" (click)="gotoRoute()">users</button>
+      <router-outlet></router-outlet>
+    </main>
   </div>
-</nav> -->
-
-<main>
-  <app-social-feed></app-social-feed>
-
-  <!-- <app-user-application-form></app-user-application-form> -->
-
-  <!-- <app-login></app-login> -->
-  <!-- <app-sales-forms></app-sales-forms> -->
-  <!-- <app-user-mng></app-user-mng> -->
-
-  <!-- <app-user-management></app-user-management> -->
-
-  <!-- <app-learn-directive></app-learn-directive> -->
-  <!-- <app-pipe-listing></app-pipe-listing> -->
-
-  <!-- 
-  <section class="py-1 text-center container-fluid">
-    <h1>Day-06</h1>
-    <div class="row py-1">
-      <div class="col-4 border">
-        <app-one-way-data-binding></app-one-way-data-binding>
-      </div>
-      <div class="col-4 border">
-        <app-two-data-binding></app-two-data-binding>
-      </div>
-    </div>
-  </section> -->
-</main>
-
-<!-- <h1>Data Binding!</h1>
-<app-one-way-data-binding></app-one-way-data-binding>
-<app-two-data-binding></app-two-data-binding> -->
+</div>
