@@ -18,10 +18,9 @@
  * 0.2 Advance reactive forms
  * 1. DI dependancy injection : service
  * 2. how Create services
- * 3. CRUD using services
+ * 3. CRUD using services HTTPCLIENT
  * 4. Routing
  * 5. Parent Routes / Child Routes
- * 6. Auth Gaurds and Interceptors
  */
 
 /* Week - 03 - 4th week */
@@ -32,15 +31,18 @@
  * 2. Routing with express
  * 3. Serving static code via express
  * 4. Passing a data to routes
+ * 6. Middleware
+ * 7. Controller
+ * 8. Services
  * 5. HTTP Methods (Get, Post, Put, Delete)
+ * 6. Angular HTTPCLIENT In angular |  6. Auth Gaurds
  * 6. Error handling
  * 7. Authentication
  * 8. Authorization
- * 9. Connecting database
- *
  */
 /* Week - 04 - 5th week */
 /**
+ * 2. Connecting database
  * 1. Data Base and types
  * 2. Cassandra how / why?
  * 3. Data Model
