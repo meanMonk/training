@@ -15,8 +15,8 @@
  *  - __dirname __filename
  *  - path
  *  - fs
- *  - event
- *  - http create server.
+ *  - eventEmitter
  *  - os module.
+ *  - http create server.
  *
  */
