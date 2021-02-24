@@ -25,3 +25,14 @@
  *     -  goods
  *
  */
+
+/* DAY-18 Assignment */
+/**
+ *  user : {username, firstname, lastname, email, password, id}
+ *  write an rest api
+ *   /users : GET
+ *   /user : POST
+ *   /user/:id :GET
+ *   /user/:id : PUT
+ *   /user/:id : DELETE
+ */
