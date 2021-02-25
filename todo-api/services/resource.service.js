@@ -1,70 +1,83 @@
-let resourceList = [
-    {
-        id: 0,
-        name: 'apple'
-    },
-    {
-        id: 1,
-        name: 'microsoft'
-    },
-    {
-        id: 2,
-        name: 'xiomi'
-    }
-]
+const ResourceModel = require('../models/resource.model');
 // Service for resources
 function resourceService() {
     /// load all resources
-    const loadAllResources = (req,res) => {
-        res.status(200);
-        res.send(resourceList);
+    const loadAllResources = async (req,res) => {
+        try {
+            let resources = await ResourceModel.findAll();
+            if(!!resources && resources.length > 0) {
+                res.status(200).send(resources)
+            } else {
+                res.status(404).send({
+                    message: 'No resource found!'
+                })
+            }
+        } catch(error) {
+            console.log(error);
+            res.status(500).send('internal server error!');
+        }
     }
     /// load single resource
-    const loadResource = (req,res) => {
-        const resource = resourceList.find((i) => i.id == req.params.id)
-        let result;
-        if(resource) {
-            result = resource;
-        } else {
-            result = {message: 'No resource found!'}
+    const loadResource = async (req,res) => {
+        try {
+            const resource = await ResourceModel.findOne({where: {id: req.params.id}})
+            if(resource) {
+                res.status(200).send(resource);
+            } else {
+                res.status(404).send('Not Found!')
+            }
+        } catch(error) {
+            res.status(500).send('Internal server error!')
         }
-
-        res.status(200);
-        res.send(result);
     }
     /// create new resource
-    const createResource = (req,res) => {
-        let newResource = {
-            name: req.body.name,
-            id: resourceList.length
-        };
-        resourceList.push(newResource)
-        res.status(200);
-        res.send(newResource)
+    const createResource = async (req,res) => {
+        try {
+            await ResourceModel.create({name: req.body.name});
+            res.status(201).send('Resource created successfully!');
+        } catch(error) {
+            console.log('error');
+            res.status(500).send('Internal server error!')
+        }
     }
     /// update resource
-    const updateResource = (req,res) => {
-        let id = req.params.id;
-        let name = req.body.name;
-        let email = req.body.email;
-        let phone = req.body.phone;
-        resourceList = resourceList.map((item) => {
-            if(item.id == id) {
-                if(!!name) item.name = name;
-                if(!!phone) item.phone = phone;
-                if(!!email) item.email = email;
+    const updateResource = async (req,res) => {
+        try {
+            if(!req.body.name && !req.params.id) {
+                res.status(400).send('Bad Request')
+                return;
             }
-            return item;
-        })
-        res.status(200).send('Resource updated successfully!')
+            const resource = await ResourceModel.findOne({where: {id: req.params.id}});
+            if(resource) {
+                await resource.update({name: req.body.name});
+                res.status(203).send('Resource updated successfully!')
+            } else {
+                res.status(404).send('Not Found!')
+            }
+        } catch(error) {
+            console.log('error');
+            res.status(500).send('Internal server error!')
+        }
     }
 
     // remove resource
-    const deleteResource = (req,res) => {
-        let id = req.params.id;
-        let index = resourceList.findIndex((i) => i.id == id);
-        resourceList.splice(index,1)
-        res.status(200).send('Resource removed successfully!')
+    const deleteResource = async (req,res) => {
+        try {
+            if(!req.params.id) {
+                res.status(400).send('Bad Request')
+                return;
+            }
+            const resource = await ResourceModel.destroy({where: {id: req.params.id}});
+            console.log(resource);
+            if(resource) {
+                res.status(200).send('Resource remove successfully!')
+            } else {
+                res.status(404).send('Not Found!')
+            }
+        } catch(error) {
+            console.log('error');
+            res.status(500).send('Internal server error!')
+        }
     }
 
 
