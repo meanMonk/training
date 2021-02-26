@@ -27,6 +27,14 @@ import { ApplicationListComponent } from './components/forms/nested-forms/applic
 import { SocialFeedComponent } from './components/social-feed/social-feed.component';
 import { SocialFeedService } from './services/feed/social-feed.service';
 import { UsersListingComponent } from './components/social-feed/users-listing/users-listing.component';
+import { ResourcesComponent } from './pages/resources/resources.component';
+import { ResourceService } from './services/resource.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { ResourceFormComponent } from './components/resource-form/resource-form.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -49,6 +57,8 @@ import { UsersListingComponent } from './components/social-feed/users-listing/us
     ApplicationListComponent,
     SocialFeedComponent,
     UsersListingComponent,
+    ResourcesComponent,
+    ResourceFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,12 +66,18 @@ import { UsersListingComponent } from './components/social-feed/users-listing/us
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
   ],
   providers: [
     TextDesignPipe,
     AppFormService,
     ApplicationsService,
     SocialFeedService,
+    ResourceService,
   ],
   exports: [TextDecoratePipe],
   bootstrap: [AppComponent],

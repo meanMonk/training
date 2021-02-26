@@ -34,10 +34,14 @@ function resourceService() {
     const createResource = async (req,res) => {
         try {
             await ResourceModel.create({name: req.body.name});
-            res.status(201).send('Resource created successfully!');
+            res.status(201).send({
+                message: 'Resource created successfully!'
+            });
         } catch(error) {
             console.log('error');
-            res.status(500).send('Internal server error!')
+            res.status(500).send({
+                message: 'Internal server error!'
+            })
         }
     }
     /// update resource

@@ -13,10 +13,17 @@
 const express = require('express');
 const resourceRouteModule = require('./routes/resource.route');
 const app = express();
+const cors = require('cors');
+const path = require('path')
 
 app.use(express.json());
 
-const port = 8080;
+app.use(cors());
+
+app.use(express.static(path.join(__dirname,'public/todo-ui')))
+
+
+const port = process.env.PORT || 8080;
 
 app.get('/',(req,res) => {
     res.status(200);
