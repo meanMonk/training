@@ -35,6 +35,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ResourceFormComponent } from './components/resource-form/resource-form.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     TextDesignPipe,

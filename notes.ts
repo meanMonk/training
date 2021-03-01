@@ -9,9 +9,9 @@
  *
  */
 /**
- * Help us to create REST API / SERVICE 
- *   - Representation expression of state transfer.
- *  
+ * Help us to create REST API / SERVICE
+ *   - Representation of state transfer.
+ *
  *  Https standards methods
  *   - Get > to get data
  *   - Post > to save or send data to server
@@ -19,12 +19,12 @@
  *   - Delete > to remove data
  *   - Patch > to patch some keys in data
  *   - Option > prefilght
- *   
- *  
- * Status Codes : 
- *   - 200 : ok, 201 : created,  
+ *
+ *
+ * Status Codes :
+ *   - 200 : ok, 201 : created,
  *   - 300
  *   - 400
  *   - 500
- * 
-*/
+ *
+ */

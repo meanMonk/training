@@ -5,16 +5,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ResourceService {
-  public selectedData: any = null;
+  public selectedResource: any = null;
 
   constructor(private http: HttpClient) {}
 
   getSelected() {
-    return this.selectedData;
+    return this.selectedResource;
   }
 
   setSelected(payload: any) {
-    this.selectedData = payload;
+    this.selectedResource = payload;
   }
 
   // loadAllResource
@@ -33,12 +33,12 @@ export class ResourceService {
    *
    */
   // updateResource
-  updateResource(payload: any) {
-    return this.http.put('http://localhost:8080/api/resource', payload);
+  updateResource(id: any, payload: any) {
+    return this.http.put(`http://localhost:8080/api/resources/${id}`, payload);
   }
 
   // deleteResource
   deleteResource(id: any) {
-    return this.http.delete(`http://localhost:8080/api/resource/${id}`);
+    return this.http.delete(`http://localhost:8080/api/resources/${id}`);
   }
 }

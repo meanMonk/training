@@ -6,7 +6,8 @@ const sequelize = require('../db.config');
 const ResourceModel = sequelize.define('Resource',{
     name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     }
 },{
     sequelize,

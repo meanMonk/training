@@ -54,7 +54,9 @@ function resourceService() {
             const resource = await ResourceModel.findOne({where: {id: req.params.id}});
             if(resource) {
                 await resource.update({name: req.body.name});
-                res.status(203).send('Resource updated successfully!')
+                res.status(203).send({
+                    message: 'Resource updated successfully!'
+                })
             } else {
                 res.status(404).send('Not Found!')
             }
@@ -72,9 +74,10 @@ function resourceService() {
                 return;
             }
             const resource = await ResourceModel.destroy({where: {id: req.params.id}});
-            console.log(resource);
             if(resource) {
-                res.status(200).send('Resource remove successfully!')
+                res.status(200).send({
+                    message: 'Resource remove successfully!'
+                })
             } else {
                 res.status(404).send('Not Found!')
             }

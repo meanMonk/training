@@ -32,7 +32,7 @@
  * 3. Serving static code via express
  * 4. Passing a data to routes
  * 6. Middleware
- * 7. Controller
+ * 7. Controller ===> routingModule
  * 8. Services
  * 5. HTTP Methods (Get, Post, Put, Delete)
  * 6. Angular HTTPCLIENT In angular |  6. Auth Gaurds
