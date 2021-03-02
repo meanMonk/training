@@ -18,7 +18,7 @@ export interface Resource {
 export class ResourcesComponent implements OnInit {
   public dataSource: Resource[] = [];
   public displayedColumns = ['id', 'name', 'createdAt', 'updatedAt', 'action'];
-
+  public error: string = '';
   constructor(
     private resourceService: ResourceService,
     private toastr: ToastrService,

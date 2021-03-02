@@ -1,8 +1,9 @@
+const {nextTick} = require('process');
 const ResourceModel = require('../models/resource.model');
 // Service for resources
 function resourceService() {
     /// load all resources
-    const loadAllResources = async (req,res) => {
+    const loadAllResources = async (req,res,next) => {
         try {
             let resources = await ResourceModel.findAll();
             if(!!resources && resources.length > 0) {
@@ -13,8 +14,9 @@ function resourceService() {
                 })
             }
         } catch(error) {
-            console.log(error);
-            res.status(500).send('internal server error!');
+            next(error);
+            // throw new Error()
+            // res.status(500).send('internal server error!');
         }
     }
     /// load single resource

@@ -6,7 +6,7 @@ async function initDb() {
         await sequelize.authenticate();
         console.log('database connection successful!')
     } catch(err) {
-        console.log('db is not connected!',Err)
+        console.log('db is not connected!',err)
     }
 
     return sequelize;

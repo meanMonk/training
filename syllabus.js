@@ -36,7 +36,8 @@
  * 8. Services
  * 5. HTTP Methods (Get, Post, Put, Delete)
  * 6. Angular HTTPCLIENT In angular |  6. Auth Gaurds
- * 6. Error handling
+ * 6. Error handling 
+ *  - --- write error handler at the end routes which is having 4 args (err, req, res, next) 
  * 7. Authentication
  * 8. Authorization
  */
