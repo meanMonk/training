@@ -1,4 +1,8 @@
 const UserModel = require('../models/user.model');
+const crypto = require('crypto');
+const appConfig = require('../app.config');
+const jwt = require('jsonwebtoken')
+
 function AuthMiddleware() {
     const isAdminUser = async (req,res,next) => {
         try {
@@ -47,7 +51,7 @@ function AuthMiddleware() {
                     req.body = {
                         userId: user.id,
                         email: user.email,
-                        permissionLevel: user.access,
+                        access: user.access,
                         provider: 'email',
                         name: user.firstname + ' ' + user.lastname,
                     };
@@ -60,7 +64,7 @@ function AuthMiddleware() {
 
             } else {
                 res.status(400).send({
-                    message: 'Invalid email or no resource found!'
+                    message: 'Invalid email or no user found!'
                 })
             }
 
@@ -70,9 +74,48 @@ function AuthMiddleware() {
         }
     }
 
+    const validJWTNeeded = (req,res,next) => {
+        if(req.headers['authorization']) {
+            try {
+                let authorization = req.headers['authorization'].split(' ');
+                if(authorization[0] !== 'Bearer') {
+                    return res.status(401).send();
+                } else {
+                    req.jwt = jwt.verify(authorization[1],appConfig.jwtSecret);
+                    return next();
+                }
+            } catch(err) {
+                console.log(err);
+                return res.status(403).send();
+            }
+        } else {
+            return res.status(401).send();
+        }
+    };
+
+    const minimumPermissionLevelRequired = (required_permission_level) => {
+        return (req,res,next) => {
+            try {
+                let access_level = parseInt(req.jwt.access);
+                if(access_level == required_permission_level) {
+                    return next();
+                } else {
+                    return res.status(403).send({
+                        message: 'Do not have permission'
+                    });
+                }
+            } catch(error) {
+                console.log(error);
+                return res.status(403).send();
+            }
+        };
+    };
+
     return {
         isAdminUser,
-        isValidPassword
+        isValidPassword,
+        validJWTNeeded,
+        minimumPermissionLevelRequired
     }
 }
 

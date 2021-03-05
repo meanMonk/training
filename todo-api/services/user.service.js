@@ -1,11 +1,16 @@
 const UsersModel = require('../models/user.model');
-const crypto = require('crypto')
+const crypto = require('crypto');
+const APP_CONFIG = require('../app.config');
+const jwt = require('jsonwebtoken');
+
 // Service for resources
 function resourceService() {
     /// load all resources
     let loadAlluser = async (req,res,next) => {
         try {
-            let userList = await UsersModel.findAll();
+            let userList = await UsersModel.findAll({
+                attributes: ['firstname','lastname','email','access']
+            });
             if(userList.length > 0) {
                 res.status(200).send({
                     userList
@@ -87,22 +92,29 @@ function resourceService() {
         }
     }
 
-    // const generateToken = async (req,res,next) => {
-    //     try {
-    //         let refreshId = req.body.userId + jwtSecret;
-    //         let salt = crypto.randomBytes(16).toString('base64');
-    //         let hash = crypto.createHmac('sha512',salt).update(refreshId).digest("base64");
-    //         req.body.refreshKey = salt;
-    //         let token = jwt.sign(req.body,jwtSecret);
-    //         let b = Buffer.from(hash);
-    //         let refresh_token = b.toString('base64');
-    //         res.status(201).send({accessToken: token,refreshToken: refresh_token})
-    //     } catch(error) {
-    //         res.status(500).send({
-    //             message: 'Internal server error!'
-    //         })
-    //     }
-    // }
+    const generateToken = async (req,res,next) => {
+        try {
+            let refreshId = req.body.userId + APP_CONFIG.jwtSecret;
+            // Create new refresh token
+            let salt = crypto.randomBytes(16).toString('base64');
+            let hash = crypto.createHmac('sha512',salt).update(refreshId).digest("base64");
+            let b = Buffer.from(hash);
+            let refresh_token = b.toString('base64');
+
+            // Create new jwt token
+            req.body.refreshKey = salt;
+            let token = jwt.sign(req.body,APP_CONFIG.jwtSecret);
+
+            res.status(201).send({
+                accessToken: token,
+                refreshToken: refresh_token
+            })
+        } catch(error) {
+            res.status(500).send({
+                message: 'Internal server error!'
+            })
+        }
+    }
 
     const updateAccess = async (req,res,next) => {
         try {
@@ -131,7 +143,7 @@ function resourceService() {
         loginUser,
         loadAlluser,
         updateAccess,
-        // generateToken
+        generateToken
     }
 }
 
