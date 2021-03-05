@@ -10,7 +10,10 @@ import { UserManagementComponent } from './components/parent-child-com/user-mana
 import { ResourceFormComponent } from './components/resource-form/resource-form.component';
 import { SocialFeedComponent } from './components/social-feed/social-feed.component';
 import { UsersListingComponent } from './components/social-feed/users-listing/users-listing.component';
+import { PrivateLayoutComponent } from './layouts/private-layout/private-layout.component';
+import { LoginComponent } from './pages/login/login.component';
 import { ResourcesComponent } from './pages/resources/resources.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Array<Route> = [
   {
@@ -19,7 +22,13 @@ const routes: Array<Route> = [
     pathMatch: 'full',
   },
   {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
     path: 'resource',
+    canActivate: [AuthGuard],
+    component: PrivateLayoutComponent,
     children: [
       {
         path: '',
@@ -31,6 +40,8 @@ const routes: Array<Route> = [
       },
     ],
   },
+
+  /* ,
   {
     path: 'databinding-2',
     component: TwoDataBindingComponent,
@@ -59,11 +70,7 @@ const routes: Array<Route> = [
   {
     path: 'applicationform',
     component: UserApplicationFormComponent,
-  },
-  {
-    path: '**',
-    redirectTo: 'usermanagement',
-  },
+  }, */
 ];
 
 @NgModule({

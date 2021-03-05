@@ -19,13 +19,23 @@ export class ResourceService {
 
   // loadAllResource
   loadAllResources() {
-    return this.http.get('http://localhost:8080/api/resources');
+    const token = localStorage.getItem('ACT');
+    return this.http.get('http://localhost:8080/api/resources', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
   // loadSingleResource
 
   // createResource
   createResource(payload: any) {
-    return this.http.post('http://localhost:8080/api/resource', payload);
+    const token = localStorage.getItem('ACT');
+    return this.http.post('http://localhost:8080/api/resource', payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 
   /**

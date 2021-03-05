@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,11 @@ export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
   public done: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initLoginForm();
@@ -36,9 +42,9 @@ export class LoginComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(
-            /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+,.\\\/;':"-]).{8,}$/
-          ),
+          // Validators.pattern(
+          //   /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+,.\\\/;':"-]).{8,}$/
+          // ),
         ],
       ],
     });
@@ -47,7 +53,17 @@ export class LoginComponent implements OnInit {
   submitForm() {
     if (!!this.loginForm.valid) {
       console.log('login form values', this.loginForm.value);
-      this.done = true;
+      this.authService.doLogin(this.loginForm.value).subscribe(
+        (res: any) => {
+          console.log('login success!', res);
+          localStorage.setItem('ACT', res.accessToken);
+          localStorage.setItem('ACT_R', res.refreshToken);
+          this.router.navigate(['/resource']);
+        },
+        (err) => {
+          console.log('Error while login!', err);
+        }
+      );
     } else {
       console.error('Error login form is invalid!');
     }

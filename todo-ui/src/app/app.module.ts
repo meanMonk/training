@@ -36,6 +36,9 @@ import { ResourceFormComponent } from './components/resource-form/resource-form.
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
+import { PrivateLayoutComponent } from './layouts/private-layout/private-layout.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,7 @@ import { ToastrModule } from 'ngx-toastr';
     UsersListingComponent,
     ResourcesComponent,
     ResourceFormComponent,
+    PrivateLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +84,8 @@ import { ToastrModule } from 'ngx-toastr';
     ApplicationsService,
     SocialFeedService,
     ResourceService,
+    AuthService,
+    AuthGuard,
   ],
   exports: [TextDecoratePipe],
   bootstrap: [AppComponent],
