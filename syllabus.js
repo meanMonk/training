@@ -36,14 +36,18 @@
  * 8. Services
  * 5. HTTP Methods (Get, Post, Put, Delete)
  * 6. Angular HTTPCLIENT In angular |  6. Auth Gaurds
- * 6. Error handling 
- *  - --- write error handler at the end routes which is having 4 args (err, req, res, next) 
+ * 6. Error handling
+ *  - --- write error handler at the end routes which is having 4 args (err, req, res, next)
  * 7. Authentication
  * 8. Authorization
  */
 
 /* Week - 04 - 5th week */
 /**
+ * 1. Installing casandra
+ *      - https://phoenixnap.com/kb/install-cassandra-on-windows
+ *      - https://medium.com/@manishyadavv/how-to-install-cassandra-on-mac-os-d9338fcfcba4
+ *      - https://phoenixnap.com/kb/install-cassandra-on-ubuntu
  * 2. Connecting database
  * 1. Data Base and types
  * 2. Cassandra how / why?
