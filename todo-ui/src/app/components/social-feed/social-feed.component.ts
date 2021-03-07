@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SocialFeedService } from 'src/app/services/feed/social-feed.service';
@@ -8,9 +8,10 @@ import { SocialFeedService } from 'src/app/services/feed/social-feed.service';
   templateUrl: './social-feed.component.html',
   styleUrls: ['./social-feed.component.scss'],
 })
-export class SocialFeedComponent implements OnInit {
+export class SocialFeedComponent implements OnInit, OnDestroy {
   postList!: Observable<any>;
   selectedUser: any;
+  intervalId: any;
 
   constructor(
     private sfService: SocialFeedService,
@@ -22,7 +23,19 @@ export class SocialFeedComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.startInterval();
+  }
+
+  startInterval() {
+    this.intervalId = setInterval(() => {
+      console.log('hi');
+    }, 5000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
+  }
 
   getPostList(id: any) {
     this.postList = this.sfService.loadPostList(id);
