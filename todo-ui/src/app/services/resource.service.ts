@@ -44,11 +44,21 @@ export class ResourceService {
    */
   // updateResource
   updateResource(id: any, payload: any) {
-    return this.http.put(`http://localhost:8080/api/resources/${id}`, payload);
+    const token = localStorage.getItem('ACT');
+    return this.http.put(`http://localhost:8080/api/resources/${id}`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 
   // deleteResource
   deleteResource(id: any) {
-    return this.http.delete(`http://localhost:8080/api/resources/${id}`);
+    const token = localStorage.getItem('ACT');
+    return this.http.delete(`http://localhost:8080/api/resources/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 }

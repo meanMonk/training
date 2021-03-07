@@ -24,10 +24,10 @@ app.use(cors());
 
 app.use(morgan('tiny'))
 
-// app.use(express.static(path.join(__dirname,'public/todo-ui')))
+app.use(express.static(path.join(__dirname,'public/todo-ui')))
 
-
-const port = process.env.PORT || 8080;
+const port = 8080;
+const host = '0.0.0.0';
 
 app.get('/',(req,res) => {
     res.status(200);
@@ -40,7 +40,10 @@ app.get('/health',(req,res) => {
 
 app.use('/api',resourceRouteModule())
 app.use('/api',userRouteModule())
-
+app.use('*',function (req,res,next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html',{root: path.join(__dirname,'public/todo-ui')});
+})
 
 // No route found
 app.use((req,res,next) => {
@@ -58,7 +61,7 @@ app.use((err,req,res,next) => {
 })
 
 
-app.listen(port,() => {
+app.listen(port,host,() => {
     console.log(`App listening on.... ${port}`)
 })
 
