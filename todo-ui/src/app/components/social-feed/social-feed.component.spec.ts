@@ -8,9 +8,8 @@ describe('SocialFeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SocialFeedComponent ]
-    })
-    .compileComponents();
+      declarations: [SocialFeedComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

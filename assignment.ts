@@ -36,3 +36,13 @@
  *   /user/:id : PUT
  *   /user/:id : DELETE
  */
+
+
+/**
+ * @Array 
+ *  Try some logic and operation on array methodds
+ *      - forEach / map / fitler/ find / findIndex / some /  reduce / slice / splice / 
+ * 
+ *  find unique element from array [{a:2,b:3, week: 1},{a:2,b:3,week: 2},{a:2,b:3,week: 3},{a:2,b:3}]
+ * 
+*/

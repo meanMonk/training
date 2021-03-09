@@ -25,10 +25,10 @@
  *  What are the Types of Databases
  *  1. Relational Database : Postgresql, MySql, IBM DB2
  *        - read and write of operation is faster
- *        - can perform complex 
+ *        - can perform complex
  *        - sql (structured query languag)
- *  2. NoSQL Database : 
- *        - Which is not going to have tables and columns 
+ *  2. NoSQL Database :
+ *        - Which is not going to have tables and columns
  *        - Mongodb is no sql document database. disadvantage is size of document 16mb mongodb.
  *        - Cassandra is also no sql data. (cassandra query languae)
  *  3. Object-Oriented Database
@@ -51,9 +51,9 @@
 /**
  *  @CASSANDRA
  *    Apache Cassandra is an example of NoSQL Database.
- *    # What is Apache Cassandra? 2008 introduce facebook 
+ *    # What is Apache Cassandra? 2008 introduce facebook
  *    It is a distributed, decentralized and an open-source database or a storage system, for managing very large amounts of structured data spread out across the world.
- *    It is basically used for managing very large amounts of structured data. 
+ *    It is basically used for managing very large amounts of structured data.
  *    There is no single point of failure,
  *     providing highly available services.
  *      Apache Cassandra, enables organisations to process large volumes of fast moving data in a reliable and scalable way.
@@ -71,21 +71,37 @@
  *
  *
  *  @FEATURES :
- *      1. Elastic scalability
+ *      1. Elastic scalability : allow to add more hardware to accomodate more customer and data as per requirement.
  *      2. Always on architecture - Continuously available for the businesss critical app as there is no point of failure.
  *      3. Fast linear-scale performance -
  *      6. Transaction support
  *      8. Fast writes : can write 100's of TB data w/o sacrifacing read efficiency.
  *
  *  @Architecture :
- *    1. Node : where the data get stored.
+ *    1. Node : it is place where the data get stored.
+ *      - all the noes in cluster play the same role, each node is indepenent and at the same time iterconnected to other nodes.
+ *      - Each node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
+ *      - When a node goes down, read/write requests can be served from other nodes in the network.
  *    2. Data Center : It is a collection of related nodes.
- *    3. Commit Log : It is a mechanism in Cassandra for recovery when it crashes.
- *    4. Cluster : Collection of data centres.
+ *    3. Cluster : it's component which contains one or more data centers
+ *    4. Commit Log : It is a mechanism in Cassandra for crash recovery when it crashes,every write operation written to commit log.
  *    5. Mem table : It is a memory resident data structure.
  *    6. SSTable :  content of mem-table reach the threshold value, the data is flushed here.
- *    7. Bloom Filter : algorithms to test if an element is a member of a set
- *    8. Compaction : process of merging the large accumulated data files.
+ *    7. Bloom Filter : quick algorithms to test if an element is a member of a set
+ *
+ *  @CassandraQueryLanguage :
+ *         > cql treats database (keyspace ) as container of tables.
+ *         > cqlsh : terminal prompt to work with cql
+ *
+ *  @WriteOperations
+ *      > Every write activity of nodes is captured by the commit logs written in the nodes.
+ *      > Later the data will be captured and stored in the mem-table.
+ *      > Whenever the mem-table is full, data will be written into the SStable data file.
+ *      > All writes are automatically partitioned and replicated throughout the cluster.
+ *      > Cassandra periodically consolidates the SSTables, discarding unnecessary data.
+ *  @ReadOperations
+ *      > During read operations, Cassandra gets values from the mem-table and
+ *      > checks the bloom filter to find the appropriate SSTable that holds the required data.
  *
  *  @Installing
  *      - https://phoenixnap.com/kb/install-cassandra-on-windows
@@ -96,5 +112,27 @@
  *        `` brew services start cassandra ``
  *    - TO Just run the cassandra simply
  *        `` cassandra -f ``
+ *  old network
+ *  simple strategy
+ *  network strategy
  *
+ * //// CQLSH
+ * 
+ * CREATE KEYSPACE grocery WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 2}
+ *    -----
+ * CREATE TABLE IF NOT EXISTS  grocery.dailyneeds_box (itemId  TEXT, name TEXT, price DECIMAL, PRIMARY KEY (itemId))
+ * 
+ * INSERT INTO grocery.dailyneeds_box(item, name, price) VALUES ("BREAD_1",'BREAD', 20);
+ * INSERT INTO grocery.dailyneeds_box(item, name, price) VALUES ("BREAD_1",'BREED', 20);
+ * INSERT INTO grocery.dailyneeds_box(item, name, price) VALUES ("BREAD_1",'BREADD', 20);
+ * INSERT INTO grocery.dailyneeds_box(item, name, price) VALUES ("BREAD_1",'BREADS', 20);
+ * 
+ * SELECT * from grocery.dailyneeds_box WHERE name='BREAD';
+ * 
+ * 
+ *  To connect node js with casssandra use below driver
+ * 
+ *  npm install cassandra-driver
+ * 
+ * 
  */

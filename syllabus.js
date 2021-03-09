@@ -52,7 +52,9 @@
  * 1. Data Base and types
  * 2. Cassandra how / why?
  * 3. Data Model
- * 4. Installation
+ * 4. Installation 
+ *  >>> cassandra -f  
+ *  >>> cqlsh
  * 5. Nodes / clusters
  * 6. Keyspace / tables / rows / columns
  * 7. Operations in cassandra

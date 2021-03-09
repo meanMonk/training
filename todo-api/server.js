@@ -13,6 +13,7 @@
 const express = require('express');
 const resourceRouteModule = require('./routes/resource.route');
 const userRouteModule = require('./routes/user.route');
+const groceryRouterModule = require('./routes/grocery.route');
 const app = express();
 const cors = require('cors');
 const path = require('path')
@@ -40,6 +41,7 @@ app.get('/health',(req,res) => {
 
 app.use('/api',resourceRouteModule())
 app.use('/api',userRouteModule())
+app.use('/api',groceryRouterModule())
 app.use('*',function (req,res,next) {
     // Just send the index.html for other files to support HTML5Mode
     res.sendFile('index.html',{root: path.join(__dirname,'public/todo-ui')});
