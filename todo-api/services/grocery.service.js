@@ -8,7 +8,7 @@ function groceryService() {
                 data
             })
         }).catch((err) => {
-            console.log(error);
+            console.log(err);
             res.status(500).send({
                 message: `Interal server error`
             })
@@ -18,6 +18,8 @@ function groceryService() {
     const loadDailyProduct = (req,res) => {
         let params = [req.params.id]
         let query = 'SELECT * FROM grocery.dailyneeds_box WHERE itemId = ? AND name = ?';
+
+        let inserQuery = `INSER INTO grocery.dailyneeds_box (itemid, name, price) VALUES (${req.body.id}, ${req.body.name}, ${req.body.price})`
 
         client.execute(query,params).then((result) => {
             res.status(200).send({
