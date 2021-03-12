@@ -22,12 +22,8 @@ const routes: Array<Route> = [
     pathMatch: 'full',
   },
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: 'resource',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     component: PrivateLayoutComponent,
     children: [
       {
@@ -40,6 +36,10 @@ const routes: Array<Route> = [
       },
     ],
   },
+  {
+     path: 'login',
+     loadChildren: () => import('./customModules/login/login.module').then(m => m.LoginModule)
+   },
 
   /* ,
   {

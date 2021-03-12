@@ -87,7 +87,7 @@ import { AuthGuard } from './services/auth.guard';
     AuthService,
     AuthGuard,
   ],
-  exports: [TextDecoratePipe],
+  exports: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,97 @@
+<section class="container">
+    <div
+      class="w-100 login-page d-flex justify-content-center align-items-center"
+    >
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <img
+                src="https://images.unsplash.com/photo-1604222025102-6cc630d7f109?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                class="rounded mx-auto d-block w-100"
+                alt="laptop with coffee"
+              />
+            </div>
+            <div class="col-6">
+              <div class="container py-5 mx-auto">
+                <div class="card-title text-center py-3">
+                  <h4>Login to continue!</h4>
+                </div>
+                <div class="text-success" *ngIf="done">
+                  <h2>Successfully submitted form</h2>
+                  <button type="button" (click)="done = !done">
+                    Login Again
+                  </button>
+                </div>
+                <form
+                  *ngIf="!done"
+                  novalidate
+                  [formGroup]="loginForm"
+                  (ngSubmit)="submitForm()"
+                >
+                  <div class="mb-3">
+                    <label class="form-label" for="emailInput"
+                      >Email address</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="emailInput"
+                      placeholder="name@example.com"
+                      formControlName="email"
+                    />
+                    <div
+                      *ngIf="
+                        loginForm.controls.email.errors &&
+                        (loginForm.controls.email.dirty ||
+                          loginForm.controls.email.touched)
+                      "
+                      id="emailHelp"
+                      class="form-text tex-danger"
+                    >
+                      Email is required ex.name@domain.com
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label" for="passwordInput">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="passwordInput"
+                      placeholder="Password"
+                      formControlName="password"
+                    />
+                    <div
+                      *ngIf="
+                        !!loginForm.controls.password.errors &&
+                        (loginForm.controls.password.dirty ||
+                          loginForm.controls.password.touched)
+                      "
+                      id="passwordHelp"
+                      class="form-text tex-danger"
+                    >
+                      Invalid Password : 1 Alphanumber 1Capital 1 small 1 number
+                      1special char wit min length 8
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center">
+                    <button
+                      type="submit"
+                      class="btn btn-block btn-outline-primary login-btn"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- table -->
+  
+  

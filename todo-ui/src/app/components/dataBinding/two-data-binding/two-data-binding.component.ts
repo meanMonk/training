@@ -13,6 +13,7 @@ export class TwoDataBindingComponent implements OnInit {
   constructor(private appService: ApplicationsService) {}
 
   ngOnInit(): void {}
+
   onInputChange(event: any) {
     this.inputValue = event.target.value;
   }
