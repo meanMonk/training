@@ -12,7 +12,11 @@ export class TwoDataBindingComponent implements OnInit {
   redColor: string = 'tomato';
   constructor(private appService: ApplicationsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('hello');
+  }
+
+   
 
   onInputChange(event: any) {
     this.inputValue = event.target.value;
